@@ -1,0 +1,3 @@
+default:
+  - src: "^/api/(.*)"
+    dest: "https://jsonplaceholder.typicode.com/$1"
