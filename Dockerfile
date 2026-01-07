@@ -34,3 +34,12 @@ COPY --from=base /etc/group /etc/group
 # user is implicitly set to `root`, learn how to use non-root user here: https://reproxy.io/#container-security
 WORKDIR /srv
 ENTRYPOINT ["/srv/reproxy"]
+
+# Use the official Reproxy image
+FROM ghcr.io/umputun/reproxy:latest
+
+# Copy config file into the container
+COPY config.yml /srv/config.yml
+
+# Start Reproxy with the file provider enabled
+ENTRYPOINT ["/srv/reproxy", "--file.enabled", "--file.name=/srv/config.yml"]
